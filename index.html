@@ -1,274 +1,58 @@
+<!DOCTYPE html>
 <html>
-
-<title> Boletim TI - S&M </title>
-<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet">
-<style>
-.header {
-	clear: left;
-	display: flex;
-	align-items:center;	
-	color: RGB(9,32,102);	
-}
-
-.header-text {
-	margin-left: 5px;
-}
-
-img{
-	float: left;
-	display: flex;
-	position: relative;
-	object-fit: cover;
-	background-size: cover;
-	width:  40px;
-    height: 40px;
-	margin-left: 10px;	
-}
-
-.mural {
-	float: left;
-	display: flex;
-	
-}
-
-.card {
-	width: 110px;
-	min-height: 50px;
-	border-radius: 7px;
-	border: 1px solid #ddd;
-	margin: 5px;
-	padding: 5px;
-	border-collapse: collapse;	
-	text-align: center;
-	font-family: 'Reenie Beanie';
-	
-	box-shadow: 2px 4px 6px #444;
-	-moz-box-shadow: 2px 4px 6px #444;
-	-webkit-box-shadow: 2px 4px 6px #444;
-}
-
-.card .title {
-	
-	font-weight: bold;
-	font-size: 1rem;
-}
-
-.card .subtitle {	
-	font-size: 1rem;
-}
-
-.card .body {	
-	font-size: 14px;	
-}
-
-
-.sap {
-	background:RGB(115,189,220);	
-}
-
-.portal {
-	background:RGB(203,253,202);
-}
-
-.force {
-	background:RGB(202,202,252);
-}
-
-.outros {
-	background:#ffffa5;
-}
-
-
-
-</style>
-
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World</title>
+    <!-- Add some CSS to change client UI -->
+    <style>
+    body {
+        background-color: #232F3E;
+        }
+    label, button {
+        color: #FF9900;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 40px;
+        }
+     input {
+        color: #232F3E;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin-left: 20px;
+        }
+    </style>
+    <script>
+        // define the callAPI function that takes a first name and last name as parameters
+        var callAPI = (firstName,lastName)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("YOUR-API-INVOKE-URL", requestOptions)
+            .then(response => response.text())
+            .then(result => alert(JSON.parse(result).body))
+            .catch(error => console.log('error', error));
+        }
+    </script>
+</head>
 <body>
-
-<div class="header">
-	<img src="img/logo.png"/>
-	&nbsp;
-	<h1 class="header-text">TI - Boletim de Sales & Marketing</h1>
-</div>
-
-
-<div class="mural">
-	<div class="card sap">
-		<div class="title">SAP</div>		
-		<div class="subtitle"></div>
-		<div class="body"></div>
-	</div>
-
-	<div class="card portal">
-		<div class="title">Portal do Cliente</div>		
-		<div class="subtitle"></div>
-		<div class="body"></div>
-	</div>
-	
-	<div class="card force">
-		<div class="title">SalesForce</div>		
-		<div class="subtitle"></div>
-		<div class="body"></div>
-	</div>
-	
-	<div class="card outros">
-		<div class="title">Outros</div>		
-		<div class="subtitle"></div>
-		<div class="body"></div>
-	</div>
-</div>
-
-<div class="header">
-	<img src="img/sol.png"/>
-	&nbsp;
-	<h2 class="header-text">Entregas planejadas na semana</h2>
-</div>
-
-<div class="mural">
-	<div class="card sap">
-		<div class="title">Sincronização SAP x SF</div>
-		<hr />		
-		<div class="subtitle">Status: Em QAS</div>
-		<hr />
-		<div class="body">Solman: 8000009020 <br />Opção de Boleto e Categorização de Clientes</div>
-	</div>
-
-	<div class="card portal">
-		<div class="title">Erro na alteração da embalagem</div>
-		<hr />		
-		<div class="subtitle">Status: Em QAS</div>
-		<hr />
-		<div class="body"></div>
-	</div>
-	
-	<div class="card force">
-		<div class="title">Erro no cancelamento de Ordens</div>
-		<hr />		
-		<div class="subtitle">Status: Em QAS</div>
-		<hr />
-		<div class="body">SNOW: INC0282662</div>
-	</div>
-</div>
-
-
-<div class="header">
-	<img src="img/brain.png"/>
-	&nbsp;
-	<h2 class="header-text">Iniciativas</h2>
-</div>
-
-
-<div class="mural">
-	<div class="card outros">
-		<div class="title">DocuSign</div>
-		<hr />		
-		<div class="subtitle">Status: Em QAS</div>
-		<hr />
-		<div class="body">Teste de envio com o novo layout do e-mail.</div>
-	</div>
-
-	<div class="card outros">
-		<div class="title">RD Station</div>
-		<hr />		
-		<div class="subtitle">Status: Em Contratação</div>
-		<hr />
-		<div class="body">Novo fornecedor para gestão de campanha de Marketing.</div>
-	</div>
-
-	<div class="card outros">
-		<div class="title">Rebates</div>
-		<hr />		
-		<div class="subtitle">Status: Em Progresso</div>
-		<hr />
-		<div class="body">Fechamento de campanhas e criação de deshboards.</div>
-	</div>
-	
-	<div class="card outros">
-		<div class="title">Quote to Order</div>
-		<hr />		
-		<div class="subtitle">Status: RFP</div>
-		<hr />
-		<div class="body">RFP lançada no mercado para escolha de fornecedor</div>
-	</div>
-	
-	
-	
-	<div class="card outros">
-		<div class="title">Quota Management</div>
-		<hr />		
-		<div class="subtitle">Status: Em Concepção </div>
-		<hr />
-		<div class="body">Discovery em progresso com time de Gestão de Carteira e Fulfillment.</div>
-	</div>
-</div>
-
-<div class="header">
-	<img src="img/improve.png"/>
-	&nbsp;
-	<h2 class="header-text">Melhorias</h2>
-</div>
-
-<div class="mural">
-	<div class="card sap">
-			<div class="title">PIS/COFINS</div>
-			<hr />		
-			<div class="subtitle">Status: Em QAS</div>
-			<hr />
-			<div class="body">Exclusão do ICMS do PIS/COFINS no BSAP e CSAP. <br />
-			* Na fila do SalesForce para desenvolvimento.</div>
-	</div>
-	
-	<div class="card force">
-			<div class="title">Create new link to COE portal</div>
-			<hr />		
-			<div class="subtitle">Status: Planejado</div>
-			<hr />
-			<div class="body">Card 1512</div>
-	</div>
-	
-	<div class="card force">
-			<div class="title">Deactivate some type of cases on SF</div>
-			<hr />		
-			<div class="subtitle">Status: Planejado</div>
-			<hr />
-			<div class="body">Card </div>
-	</div>
-	
-	<div class="card force">
-			<div class="title"></div>
-			<hr />		
-			<div class="subtitle">Status: Planejado</div>
-			<hr />
-			<div class="body">Card </div>
-	</div>
-	
-	<div class="card force">
-			<div class="title"></div>
-			<hr />		
-			<div class="subtitle">Status: Planejado</div>
-			<hr />
-			<div class="body">Card </div>
-	</div>
-	
-	<div class="card force">
-			<div class="title"></div>
-			<hr />		
-			<div class="subtitle">Status: Planejado</div>
-			<hr />
-			<div class="body">Card </div>
-	</div>
-</div>
-	
-<div class="header">
-	<img src="img/ambulance.png"/>
-	&nbsp;
-	<h2 class="header-text">Incidentes</h2>
-</div>
-
-<div class="header">
-	<img src="img/hands.png"/>
-	&nbsp;
-	<h2 class="header-text">SAQs</h2>
-</div>
-
+    <form>
+        <label>First Name :</label>
+        <input type="text" id="fName">
+        <label>Last Name :</label>
+        <input type="text" id="lName">
+        <!-- set button onClick method to call function we defined passing input values as parameters -->
+        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Call API</button>
+    </form>
 </body>
 </html>
